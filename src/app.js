@@ -1,5 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import { router } from './registration.js';
+
 
 dotenv.config();
 
@@ -8,6 +10,11 @@ const {
 } = process.env;
 
 const app = express();
+
+app.set('views', './views');
+app.set('view engine', 'ejs');
+
+app.use('/', router);
 
 // TODO setja upp rest af virkni!
 

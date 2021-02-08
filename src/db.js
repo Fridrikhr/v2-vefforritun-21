@@ -12,4 +12,13 @@ if (!connectionString) {
   process.exit(1);
 }
 
-// TODO gagnagrunnstengingar
+export async function insert(data) {
+  const q = `
+INSERT INTO applications
+(named, id, remark, noName)
+VALUES
+($1, $2, $3, $4)`;
+  const values = [data.named, data.id, data.remark, data.noName];
+
+  return query(q, values);
+}

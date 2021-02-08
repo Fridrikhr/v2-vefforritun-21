@@ -1,0 +1,27 @@
+<%- include('header') -%>
+
+<h1>Undirskriftarlisti</1h>
+
+  <form method="post" action="/">
+    <div class="field">
+      <label for="named">Nafn</label>
+      <input type="text" name="named" id="named" value="<%= named %>" class="">
+    </div>
+    <div class="field">
+      <label for="id">Kennitala</label>
+      <input type="text" name="id" id="id" value="<%= id %>" class="">
+    </div>
+    <div class="field">
+      <label for="remark">Athugasemd</label>
+      <input type="text" name="remark" id="remark" value="<%= remark %>" class="">
+    </div>
+    <div class="field">
+      <label>
+        <input type="checkbox" name="noName" value="<%= noName %>">
+        Ekki birta nafn á lista
+      </label>
+    </div>
+    <button>Skrifa undir</button>
+  </form>
+
+  <%- include('footer') -%>

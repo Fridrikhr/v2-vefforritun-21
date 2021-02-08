@@ -1,0 +1,85 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html { /* stylelint-disable-line */
+  box-sizing: border-box;
+  overflow-x: hidden;
+
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+}
+
+input,
+select,
+textarea,
+button {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+}
+
+h1{
+  margin-bottom: 1rem;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+main {
+  margin: 2rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.field label {
+  font-size: 1.375rem;
+}
+
+.field input,
+.field textarea {
+  padding: 8px;
+  max-width: 800px;
+
+  border: 1px solid #888;
+  border-radius: 3px;
+}
+
+.field textarea {
+  flex: 1;
+  min-height: 6rem;
+}
+
+
+.field--radio {
+  margin-left: -1rem;
+  padding: 1rem;
+}
+
+.field--radio label {
+  flex: initial;
+  align-items: center;
+  display: flex;
+}
+
+.field--radio input {
+  margin-right: 1rem;
+}
+
+button {
+  border: 1px solid #888;
+  border-radius: 3px;
+  padding: 0.5rem;
+  background-color: #fff;
+  transition: background-color ease-in 300ms;
+}
