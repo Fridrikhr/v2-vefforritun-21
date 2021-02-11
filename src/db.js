@@ -65,8 +65,7 @@ export async function initialize() {
 
 };
 
-const pool = new pg.Pool({ connectionString });
-
+const pool = new pg.Pool({ connectionString , ssl: { rejectUnauthorized: false} });
 export async function select() {
   const client = await pool.connect();
 
