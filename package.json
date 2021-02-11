@@ -6,5 +6,32 @@
   },
   "scripts": {
     "start": "node src/app.js"
-  }
+  },
+  "dependencies": {
+    "check": "^1.0.0",
+    "css": "^3.0.0",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.6",
+    "eslint": "^7.19.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.9.2",
+    "og": "0.0.2",
+    "pg": "^8.5.1",
+    "sanitize": "^2.1.0",
+    "xss": "^1.0.8"
+  },
+  "name": "vef2-2021-v2",
+  "description": "[Kynning í fyrirlestri](https://www.youtube.com/watch?v=1kRJBE040oY).",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fridrikhr/v2-vefforritun-21.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fridrikhr/v2-vefforritun-21/issues"
+  },
+  "homepage": "https://github.com/Fridrikhr/v2-vefforritun-21#readme"
 }

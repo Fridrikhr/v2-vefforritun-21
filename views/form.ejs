@@ -1,27 +1,50 @@
 <%- include('header') -%>
 
-<h1>Undirskriftarlisti</1h>
+<h1>Skrifa undir</h1>
 
   <form method="post" action="/">
     <div class="field">
-      <label for="named">Nafn</label>
-      <input type="text" name="named" id="named" value="<%= named %>" class="">
+      <label for="name">Nafn</label>
+      <input type="text" name="name" id="name"  class="">
     </div>
     <div class="field">
-      <label for="id">Kennitala</label>
-      <input type="text" name="id" id="id" value="<%= id %>" class="">
+      <label for="nationalId">Kennitala</label>
+      <input type="text" name="nationalId" id="nationalId" class="">
     </div>
     <div class="field">
-      <label for="remark">Athugasemd</label>
-      <input type="text" name="remark" id="remark" value="<%= remark %>" class="">
+      <label for="comment">Athugasemd</label>
+      <input type="text" name="comment" id="comment" class="">
     </div>
     <div class="field">
-      <label>
-        <input type="checkbox" name="noName" value="<%= noName %>">
+      <label for="anonymous">
+        <input type="checkbox" name="anonymous">
         Ekki birta nafn á lista
       </label>
     </div>
     <button>Skrifa undir</button>
   </form>
+
+  <h1>Undirskrifta listi </h1>
+
+    <table class="signing">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Nafn</th>
+          <th>Athugasemd</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% table.forEach((signing) => { %>
+          <tr>
+            <td><%= signing.signed %></td>
+            <td><%= signing.anonymous == false ? signing.name : '--- nafnleynd ---' %></td>
+            <td><%= signing.comment %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+
 
   <%- include('footer') -%>
