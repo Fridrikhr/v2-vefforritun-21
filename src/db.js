@@ -1,14 +1,13 @@
 import pg from 'pg';
 import dotenv from 'dotenv';
-import { readFile } from 'fs/promises';
 
 const { Client } = pg;
 
 dotenv.config();
 
-
 const {
   DATABASE_URL: connectionString,
+  Node_ENV: nodeEnv = 'development',
 } = process.env;
 
 if (!connectionString) {
@@ -16,7 +15,16 @@ if (!connectionString) {
   process.exit(1);
 }
 
+async function query(q, values = []) {
+  const client = new Client({ connectionString });
 
+  await client.connect();
+
+  const data = await client.query(q, values);
+  const { rows } = data;
+  await client.end();
+  return rows;
+}
 
 export async function insert(data) {
   const q = `
@@ -29,43 +37,9 @@ VALUES
   return query(q, values);
 }
 
+const ssl = nodeEnv !== 'development' ? { rejectUnauthorized: false } : false;
+const pool = new pg.Pool({ connectionString, ssl });
 
-async function query(q, values=[]) {
-  const client = new Client({ connectionString });
-
-  await client.connect();
-
-  const data = await client.query(q, values);
-  const { rows } = data;
-  await client.end()
-
-  return rows;
-
-}
-
-
-export async function initialize() {
-
-  try {
-    const createTable = await readFile('./sql/schema.sql');
-    await query(createTable.toString('utf8'));
-    console.info('Table made');
-  } catch(e) {
-    console.error(e.message);
-    return;
-  }
-
-    try {
-      const insert = await readFile('./sql/fake.sql');
-      await query(insert.toString('utf8'));
-      console.info('Data added');
-    } catch (e) {
-      console.error(e.message);
-    }
-
-};
-
-const pool = new pg.Pool({ connectionString , ssl: { rejectUnauthorized: false} });
 export async function select() {
   const client = await pool.connect();
 
@@ -79,4 +53,3 @@ export async function select() {
   }
   return [];
 }
-
